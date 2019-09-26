@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button[][] buttons = new Button[3][3];
+    private Button buttonReset;
 
     private boolean player1turn = true;
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        Button buttonReset = findViewById(R.id.button_reset);
+         buttonReset = findViewById(R.id.button_reset);
         buttonReset.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -60,8 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(player1turn){
             ((Button) v).setText("x");
+            v.setBackgroundResource(R.drawable.triangle);
         } else{
             ((Button) v). setText("o");
+            v.setBackgroundResource(R.drawable.square);
         }
 
         roundCount++;
@@ -148,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 buttons[i][j].setText("");
+                buttons[i][j].setBackground(buttonReset.getBackground());
             }
         }
 
